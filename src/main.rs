@@ -1,8 +1,7 @@
+mod input;
 mod output;
 
 fn main() {
-    output::error_message(&"Error Message".to_string());
-    output::success_message(&"Succsess Message".to_string());
-    output::plain_text(&"Plain Text".to_string(), false);
-
+    let inp = input::get_text("Enter some text".to_string(), 5, "".to_string());
+    output::success_message(inp);
 }
