@@ -1,3 +1,5 @@
+use ansi_term::Colour;
+
 fn main() {
-    println!("Hello, world!");
+    println!("{}", Colour::Green.paint("Testing"));
 }
