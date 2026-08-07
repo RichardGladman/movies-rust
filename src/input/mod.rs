@@ -6,8 +6,7 @@ pub fn get_text(prompt: String, min_len: usize, default_value: String) -> String
     let mut inp: String = String::from("");
 
     loop {
-        let hint = prompt.clone() + ": ";
-        output::plain_text(hint, false);
+        output::plain_text(prompt.clone() + ": ", false);
         io::stdin().read_line(&mut inp).expect("Error reading input");
         inp = inp.trim().to_string();
 
@@ -30,10 +29,9 @@ pub fn get_char(prompt: String, valid_values: Vec<char>, to_upper: bool) -> char
     let mut valid = false;
     
     loop {
-        let hint = prompt.clone() + ": ";
         inp = String::new();
         
-        output::plain_text(hint, false);
+        output::plain_text(prompt.clone() + ": ", false);
         io::stdin().read_line(&mut inp).expect("Error reading input");
 
          if to_upper {
@@ -73,7 +71,7 @@ pub fn get_integer(mut prompt: String, default_value: i32) -> i32 {
 
     while !valid {
         inp = String::new();
-        output::plain_text(prompt.clone(), false);
+        output::plain_text(prompt.clone() + ": ", false);
         io::stdin().read_line(&mut inp).expect("Error reading input");
 
         let value = inp.trim();
