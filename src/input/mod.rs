@@ -63,3 +63,35 @@ pub fn get_char(prompt: String, valid_values: Vec<char>, to_upper: bool) -> char
 
     return ch;
 }
+
+pub fn get_integer(mut prompt: String, default_value: i32) -> i32 {
+    let mut inp: String;
+    let mut number: i32 = default_value;
+    let mut valid = false;
+    
+    prompt.push_str(": ");
+
+    while !valid {
+        inp = String::new();
+        output::plain_text(prompt.clone(), false);
+        io::stdin().read_line(&mut inp).expect("Error reading input");
+
+        let value = inp.trim();
+
+        if value.len() > 0 {
+            match value.parse::<i32>() {
+                Ok(n) => {
+                    number = n;
+                    valid = true;
+                },
+                Err(_) => {
+                    output::error_message("Error: Invalid number".to_string());
+                }
+            }
+        } else {
+            valid = true;
+        }
+    }
+
+    return number;
+}
