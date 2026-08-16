@@ -1,11 +1,14 @@
+use crate::output;
+
+#[derive(Clone)]
 pub struct MenuItem {
     option: char,
-    text: &str,
+    text: String,
     action: fn(),
 }
 
 impl MenuItem {
-    pub fn new(option: char, text: &str, action: fn()) -> MenuItem {
+    pub fn new(option: char, text: String, action: fn()) -> MenuItem {
         return MenuItem {
             option, text, action
         };
@@ -24,7 +27,7 @@ impl MenuItem {
 
         message.push(self.option);
         message.push_str(". ");
-        message.push_str(self.text);
+        message.push_str(&self.text);
 
         output::plain_text(message, new_line);
     }
