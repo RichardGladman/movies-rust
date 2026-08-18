@@ -1,18 +1,26 @@
 mod input;
 mod output;
+mod menu;
+
+use {menu::Menu, menu::MenuItem};
 
 fn main() {
-    let inp = input::get_text("Enter some text".to_string(), 5, "".to_string());
-    output::success_message(inp);
+    let menu = create_menu();
 
-    let valid: Vec<char> = vec!['A', 'B', 'C'];
-    let ch = input::get_char("Enter a character".to_string(), valid, true);
-    output::success_message(ch.to_string());
-
-    let int = input::get_integer("Enter a number".to_string(), 0);
-    output::success_message(int.to_string());
-
-    let int = input::get_integer("Enter a number".to_string(), 59);
-    output::success_message(int.to_string());
-
+    menu.render(true);
 }
+
+fn create_menu() -> Menu {
+    let mut menu = Menu::new("Main Menu".to_string(), "Make your selection: ".to_string());
+
+    menu.add_item(MenuItem::new('A', "Add Movie".to_string(), dummy));
+    menu.add_item(MenuItem::new('E',  "Edit Movie".to_string(), dummy));
+    menu.add_item(MenuItem::new('D', "Delete Movie".to_string(), dummy));
+    menu.add_item(MenuItem::new('V', "View Movie".to_string(), dummy));
+    menu.add_item(MenuItem::new('S', "Search Movies".to_string(), dummy));
+    menu.add_item(MenuItem::new('Q', "Quit".to_string(), dummy));
+
+    return menu;
+}
+
+fn dummy() {}

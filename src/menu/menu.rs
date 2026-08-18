@@ -3,6 +3,7 @@ use crate::menu::MenuItem;
 use crate::input;
 use crate::output;
 
+#[derive(Clone)]
 pub struct Menu {
     header: String, prompt: String, items: Vec<MenuItem>,
 }
@@ -24,7 +25,7 @@ impl Menu {
         return self.items;
     }
 
-    pub fn add_item(mut self, item: MenuItem) {
+    pub fn add_item(&mut self, item: MenuItem) {
         self.items.push(item);
     }
 
