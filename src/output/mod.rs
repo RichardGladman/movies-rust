@@ -12,7 +12,7 @@ pub fn success_message(message: String) {
 pub fn plain_text(message: String, new_line: bool) {
     print!("{}", message);
     if new_line {
-        println!("\n");
+        print!("\n");
     }
     io::stdout().flush().unwrap(); 
 }
