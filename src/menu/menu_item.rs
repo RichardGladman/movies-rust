@@ -22,7 +22,7 @@ impl MenuItem {
         return self.action;
     }
 
-    pub fn render(self, new_line: bool) {
+    pub fn render(&self, new_line: bool) {
         let mut message = String::new();
 
         message.push(self.option);
