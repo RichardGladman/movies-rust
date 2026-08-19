@@ -20,7 +20,7 @@ impl Menu {
         let mut header = String::from("\n");
         header.push_str(&self.header);
         header.push_str("\n\n");
-        output::plain_text(header, new_line);
+        output::plain_text(&header, new_line);
 
         for item in &self.items {
             (*item).render(new_line);
@@ -34,7 +34,7 @@ impl Menu {
             valid_values.push(item.get_option());
         }
 
-        return input::get_char(self.prompt.clone(), valid_values, true);
+        return input::get_char(&self.prompt, valid_values, true);
     }
 
     pub fn invoke(&self, choice: char) {

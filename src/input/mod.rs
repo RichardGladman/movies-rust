@@ -2,16 +2,16 @@ use crate::output;
 
 use std::io;
 
-pub fn get_text(prompt: String, min_len: usize, default_value: String) -> String {
+pub fn get_text(prompt: &str, min_len: usize, default_value: String) -> String {
     let mut inp: String = String::from("");
 
     loop {
-        output::plain_text(prompt.clone() + ": ", false);
+        output::plain_text(prompt, false);
         io::stdin().read_line(&mut inp).expect("Error reading input");
         inp = inp.trim().to_string();
 
         if min_len > 0 && inp.len() < min_len {
-            output::error_message(format!("Error: input must be at least {} characters long", min_len));
+            output::error_message(&format!("Error: input must be at least {} characters long", min_len));
             inp = String::from("");
         }
 
@@ -23,7 +23,7 @@ pub fn get_text(prompt: String, min_len: usize, default_value: String) -> String
     return if inp.len() > 0 { inp } else { default_value };
 }
 
-pub fn get_char(prompt: String, valid_values: Vec<char>, to_upper: bool) -> char {
+pub fn get_char(prompt: &str, valid_values: Vec<char>, to_upper: bool) -> char {
     let mut ch: char;
     let mut inp: String;
     let mut valid = false;
@@ -31,7 +31,7 @@ pub fn get_char(prompt: String, valid_values: Vec<char>, to_upper: bool) -> char
     loop {
         inp = String::new();
         
-        output::plain_text(prompt.clone() + ": ", false);
+        output::plain_text(&prompt, false);
         io::stdin().read_line(&mut inp).expect("Error reading input");
 
          if to_upper {
@@ -50,7 +50,7 @@ pub fn get_char(prompt: String, valid_values: Vec<char>, to_upper: bool) -> char
                 }
             }
             if !valid {
-                output::error_message("Invalid option. Please try again".to_string());
+                output::error_message("Invalid option. Please try again");
             }
         }
         
@@ -62,16 +62,14 @@ pub fn get_char(prompt: String, valid_values: Vec<char>, to_upper: bool) -> char
     return ch;
 }
 
-pub fn get_integer(mut prompt: String, default_value: i32) -> i32 {
+pub fn get_integer(prompt: &str, default_value: i32) -> i32 {
     let mut inp: String;
     let mut number: i32 = default_value;
     let mut valid = false;
     
-    prompt.push_str(": ");
-
     while !valid {
         inp = String::new();
-        output::plain_text(prompt.clone() + ": ", false);
+        output::plain_text(&prompt, false);
         io::stdin().read_line(&mut inp).expect("Error reading input");
 
         let value = inp.trim();
@@ -83,7 +81,7 @@ pub fn get_integer(mut prompt: String, default_value: i32) -> i32 {
                     valid = true;
                 },
                 Err(_) => {
-                    output::error_message("Error: Invalid number".to_string());
+                    output::error_message("Error: Invalid number");
                 }
             }
         } else {

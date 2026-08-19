@@ -29,6 +29,6 @@ impl MenuItem {
         message.push_str(". ");
         message.push_str(&self.text);
 
-        output::plain_text(message, new_line);
+        output::plain_text(&message, new_line);
     }
 }
