@@ -4,11 +4,11 @@ use crate::output;
 pub struct MenuItem {
     option: char,
     text: String,
-    action: fn(),
+    action: Option<fn()>,
 }
 
 impl MenuItem {
-    pub fn new(option: char, text: String, action: fn()) -> MenuItem {
+    pub fn new(option: char, text: String, action: Option<fn()>) -> MenuItem {
         return MenuItem {
             option, text, action
         };
@@ -18,7 +18,7 @@ impl MenuItem {
         return self.option;
     }
 
-    pub fn get_action(self) -> fn() {
+    pub fn get_action(self) -> Option<fn()> {
         return self.action;
     }
 

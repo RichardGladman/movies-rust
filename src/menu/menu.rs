@@ -39,10 +39,12 @@ impl Menu {
 
     pub fn invoke(&self, choice: char) {
         for item in self.items.clone() {
-            let func = item.clone().get_action().clone();
+            let option = item.clone().get_action().clone();
             if item.clone().get_option().clone() == choice {
-                func();
-                break;
+                if let Some(func) = option {
+                    func();
+                    break;
+                }
             }
         }
     }
