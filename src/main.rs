@@ -23,12 +23,12 @@ fn main() {
 fn create_menu() -> Menu {
     let mut menu = Menu::new("Main Menu".to_string(), "Make your selection: ".to_string());
 
-    menu.add_item(MenuItem::new('A', "Add Movie".to_string(), Option::Some(do_nothing)));
-    menu.add_item(MenuItem::new('E',  "Edit Movie".to_string(), Option::Some(do_nothing)));
-    menu.add_item(MenuItem::new('D', "Delete Movie".to_string(), Option::Some(do_nothing)));
-    menu.add_item(MenuItem::new('V', "View Movie".to_string(), Option::Some(do_nothing)));
-    menu.add_item(MenuItem::new('S', "Search Movies".to_string(), Option::Some(do_nothing)));
-    menu.add_item(MenuItem::new('Q', "Quit".to_string(), Option::None::<fn()>));
+    menu.add_item(MenuItem::new('A', "Add Movie".to_string(), Some(do_nothing)));
+    menu.add_item(MenuItem::new('E',  "Edit Movie".to_string(), None::<fn()>));
+    menu.add_item(MenuItem::new('D', "Delete Movie".to_string(), Some(do_nothing)));
+    menu.add_item(MenuItem::new('V', "View Movie".to_string(), Some(do_nothing)));
+    menu.add_item(MenuItem::new('S', "Search Movies".to_string(), Some(do_nothing)));
+    menu.add_item(MenuItem::new('Q', "Quit".to_string(), None::<fn()>));
 
     return menu;
 }

@@ -43,8 +43,8 @@ impl Menu {
             if item.clone().get_option().clone() == choice {
                 if let Some(func) = option {
                     func();
-                    break;
                 }
+                break;
             }
         }
     }
