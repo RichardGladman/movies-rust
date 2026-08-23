@@ -14,11 +14,11 @@ impl MenuItem {
         };
     }
 
-    pub fn get_option(self) -> char {
+    pub fn get_option(&self) -> char {
         return self.option;
     }
 
-    pub fn get_action(self) -> Option<fn()> {
+    pub fn get_action(&self) -> Option<fn()> {
         return self.action;
     }
 
