@@ -30,7 +30,7 @@ impl Menu {
     pub fn selection(&self) -> char {
         let mut valid_values = Vec::new();
 
-        for item in self.items.clone() {
+        for item in &(self.items) {
             valid_values.push(item.get_option());
         }
 
