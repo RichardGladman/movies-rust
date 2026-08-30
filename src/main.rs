@@ -1,10 +1,13 @@
 mod input;
 mod output;
 mod menu;
+mod util;
+mod model;
 
-use {menu::Menu, menu::MenuItem};
+use {crate::util::filehandler, menu::{Menu, MenuItem}};
 
 fn main() {
+    let data = filehandler::load();
     let menu = create_menu();
     let mut choice: char;
 
