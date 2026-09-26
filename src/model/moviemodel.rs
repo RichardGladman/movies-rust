@@ -1,9 +1,9 @@
 pub struct MovieModel {
-    title: String,
-    format: String,
-    certificate: String,
-    rating: u32,
-    running_time: u32
+    pub title: String,
+    pub format: String,
+    pub certificate: String,
+    pub rating: u32,
+    pub running_time: u32
 }
 
 impl MovieModel {

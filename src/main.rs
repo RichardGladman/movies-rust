@@ -4,10 +4,10 @@ mod menu;
 mod util;
 mod model;
 
-use {crate::util::filehandler, menu::{Menu, MenuItem}};
+use {crate::util::filehandler, crate::menu::{Menu, MenuItem}};
 
 fn main() {
-    let data = filehandler::load();
+    let movies = filehandler::load();
     let menu = create_menu();
     let mut choice: char;
 
