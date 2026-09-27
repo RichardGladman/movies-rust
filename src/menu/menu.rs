@@ -43,7 +43,7 @@ impl Menu {
             let option = item.get_action();
             if item.get_option() == choice {
                 if let Some(func) = option {
-                    func(movies.to_vec());
+                    func(&movies);
                 }
                 break;
             }

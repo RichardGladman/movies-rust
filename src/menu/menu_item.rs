@@ -4,11 +4,11 @@ use crate::{model::MovieModel, output};
 pub struct MenuItem {
     option: char,
     text: String,
-    action: Option<fn(Vec<MovieModel>)>,
+    action: Option<fn(&Vec<MovieModel>)>,
 }
 
 impl MenuItem {
-    pub fn new(option: char, text: String, action: Option<fn(Vec<MovieModel>)>) -> MenuItem {
+    pub fn new(option: char, text: String, action: Option<fn(&Vec<MovieModel>)>) -> MenuItem {
         return MenuItem {
             option, text, action
         };
@@ -18,7 +18,7 @@ impl MenuItem {
         return self.option;
     }
 
-    pub fn get_action(&self) -> Option<fn(Vec<MovieModel>)> {
+    pub fn get_action(&self) -> Option<fn(&Vec<MovieModel>)> {
         return self.action;
     }
 

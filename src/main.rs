@@ -39,5 +39,5 @@ fn create_menu() -> Menu {
 }
 
 fn do_add(movies: &Vec<MovieModel>) {
-    println!("Doing nothing");
+    println!("{movies:#?}");
 }
