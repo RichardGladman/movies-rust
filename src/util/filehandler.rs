@@ -38,22 +38,22 @@ pub fn load() -> Vec<MovieModel> {
     return data;
 }
 
-pub fn save(movies: &Vec<MovieModel>) {
+pub fn save(movies: Vec<MovieModel>) {
     let mut data = String::new();
 
     for movie in movies {
-        let mut line = &movie.title;
+        let mut line = movie.title;
         line.push_str("||");
-        line.push_str(&movie.format);
+        line.push_str(&(movie.format));
         line.push_str("||");
-        line.push_str(&movie.certificate);
+        line.push_str(&(movie.certificate));
         line.push_str("||");
-        line.push_str(&movie.rating.to_string());
+        line.push_str(&(movie.rating.to_string()));
         line.push_str("||");
-        line.push_str(&movie.running_time.to_string());
+        line.push_str(&(movie.running_time.to_string()));
         line.push('\n');
 
-        data.push_str(line);
+        data.push_str(&line);
     }
 
     fs::write(get_file_path(), data);
