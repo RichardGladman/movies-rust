@@ -1,3 +1,4 @@
+#[derive(Clone)]
 pub struct MovieModel {
     pub title: String,
     pub format: String,

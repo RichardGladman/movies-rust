@@ -1,6 +1,7 @@
 use crate::menu::MenuItem;
 
 use crate::input;
+use crate::model::MovieModel;
 use crate::output;
 
 pub struct Menu {
@@ -37,12 +38,12 @@ impl Menu {
         return input::get_char(&self.prompt, valid_values, true);
     }
 
-    pub fn invoke(&self, choice: char) {
+    pub fn invoke(&self, choice: char, movies: &Vec<MovieModel>) {
         for item in &(self.items) {
             let option = item.get_action();
             if item.get_option() == choice {
                 if let Some(func) = option {
-                    func();
+                    func(movies.to_vec());
                 }
                 break;
             }
