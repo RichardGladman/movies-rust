@@ -39,10 +39,10 @@ pub fn load() -> Vec<MovieModel> {
 }
 
 pub fn save(movies: &Vec<MovieModel>) {
-    let data = String::new();
+    let mut data = String::new();
 
     for movie in movies {
-        let line = &movie.title;
+        let mut line = &movie.title;
         line.push_str("||");
         line.push_str(&movie.format);
         line.push_str("||");

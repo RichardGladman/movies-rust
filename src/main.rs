@@ -21,6 +21,8 @@ fn main() {
 
         menu.invoke(choice);
     }
+
+    filehandler::save(&movies);
 }
 
 fn create_menu() -> Menu {
