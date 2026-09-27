@@ -56,5 +56,5 @@ pub fn save(movies: Vec<MovieModel>) {
         data.push_str(&line);
     }
 
-    fs::write(get_file_path(), data);
+    let _ = fs::write(get_file_path(), data);
 }
